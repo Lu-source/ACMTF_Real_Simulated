@@ -13,7 +13,8 @@ Eigenvector Research, DataSet Object, available online at https://eigenvector.co
 Auxiliary functions are under the folder 'functions'
 
 
-### 'script_ACMTF_CP_real_sim.m' is the main function. It fits the ACMTF and CP models to the data and shows how to relate the subject factor matrix to various meta variables. It shows how to plot the weightes of each component of ACMTF model. It also calls the script_simreal_replicability.m function to assess the replicability of ACMTF and CP models.
+### 'script_ACMTF_CP_real_sim.m' is the main function. 
+It fits the ACMTF and CP models to the data and shows how to relate the subject factor matrix to various meta variables. It shows how to plot the weightes of each component of ACMTF model. It also calls the script_simreal_replicability.m function to assess the replicability of ACMTF and CP models.
 
 ### Folder 'functions' contains auxiliary functions
 - functions/script_simreal_replicability.m checks the replicability of the factors extracted by an R-component ACMTF/CP model. 
