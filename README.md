@@ -6,11 +6,11 @@ While the data we have used is not available publicly, the same pipeline can be 
 
 
 The implementation makes use of the following toolboxes/packages: 
-Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor Toolbox, Version 3.1. Available on https://www.tensortoolbox.org, 2020
-Evrim Acar et al, “Structure-revealing data fusion”, BMC Bioinformatics, 15:239, 2014. CMTF Toolbox Available on https://github.com/eacarat/CMTF_Toolbox
-Daniel M. Dunlavy, Tamara G. Kolda, and Evrim Acar, “Poblano v1.0: A Matlab Toolbox for Gradient-Based Optimization”, 2010. Available online at https://github.com/sandialabs/poblano_toolbox
-Eigenvector Research, DataSet Object, available online at https://eigenvector.com/software/dataset-object/
-Auxiliary functions are under the folder 'functions'
+- Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor Toolbox, Version 3.1. Available on https://www.tensortoolbox.org, 2020
+- Evrim Acar et al, “Structure-revealing data fusion”, BMC Bioinformatics, 15:239, 2014. CMTF Toolbox Available on https://github.com/eacarat/CMTF_Toolbox
+- Daniel M. Dunlavy, Tamara G. Kolda, and Evrim Acar, “Poblano v1.0: A Matlab Toolbox for Gradient-Based Optimization”, 2010. Available online at https://github.com/sandialabs/poblano_toolbox
+- Eigenvector Research, DataSet Object, available online at https://eigenvector.com/software/dataset-object/
+- Auxiliary functions are under the folder 'functions'
 
 
 ### 'script_ACMTF_CP_real_sim.m' is the main function. 
