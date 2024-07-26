@@ -1,7 +1,6 @@
 The repository contains scripts showing how to jointly analyze real and simulated meal challenge metabolomics data using an ACMTF model and how to fit a CP model to real metabolomics data. The data is assumed to be arranged as a third-order tensor with modes: subjects, time and metabolites. 
 
 While the data we have used is not available publicly, the same pipeline can be used to analyze similar time-resolved data sets. For more details about the data and the analysis, please see the full paper:
- L. Li, H. Hoefsloot, ..., M. A. Rasmussen, A. K. Smilde and E. Acar, Longitudinal metabolomics data analysis informed by mechanistic models, 2024 
 
 
 
