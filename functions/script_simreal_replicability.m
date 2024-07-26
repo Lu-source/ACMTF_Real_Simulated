@@ -1,11 +1,11 @@
 function [FMS_acmtf_real, FMS_acmtf_sim, FMS_cp_real] = script_simreal_replicability(Xreal, Xsim, R, nb_starts, lambda)
 
-% This function checks the replicability of R-component ACMTF/CP model by the following steps
+% This function checks the replicability of an R-component ACMTF/CP model as follows:
 %   Step1: form a random ten-fold of the samples in the first mode of data tensor Xreal 
 %   Step2: leave one fold of the data out 
 %   Step3: fit an R-component ACMTF/CP model to the remaining 90% - repeat this by leaving out each fold once
 %   Step4: compute the factor match scores between the best runs of the ACMTF/CP models (in the second and third modes for the real data part
-%          , but all modes in the simulated data part). 
+%          and all modes in the simulated data part). 
 %   Step5: Repeat Step1-4 ten times
 % Return in total 450 FMS scores.
 
@@ -13,7 +13,7 @@ function [FMS_acmtf_real, FMS_acmtf_sim, FMS_cp_real] = script_simreal_replicabi
 sub_low    = find(Xreal.class{1,2}==1 | Xreal.class{1,2}==4); % Lower BMI subjects
 sub_high   = find(Xreal.class{1,2}==2 | Xreal.class{1,2}==3); % Higher BMI subjects
 index_perm = [sub_low,sub_high];
-Xreal_perm          = Xreal(index_perm,:,:);
+Xreal_perm = Xreal(index_perm,:,:);
 
 
 %% form splits and fit ACMTF/CP
@@ -47,8 +47,6 @@ for r = 1:repeats
     FMS_acmtf_sim  = [FMS_acmtf_sim;fms_2{r}];
     FMS_cp_real    = [FMS_cp_real;fms_cp{r}];
 end
-
-
 
 eval(strcat('save FMS_replicability_ACMTF_CP_R', num2str(R), '.mat'))
 
