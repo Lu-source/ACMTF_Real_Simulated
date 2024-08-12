@@ -1,6 +1,6 @@
 % This script shows the workflow to fit an ACMTF model to jointly analyze two tensors (real/simulated meal challenge metabolomics data) 
 %
-%   L. Li, H. Hoefsloot, ..., M. A. Rasmussen, A. K. Smilde and E. Acar, Longitudinal metabolomics data analysis 
+%   L. Li, H. Hoefsloot, B. M. Bakker, D. Horner, M. A. Rasmussen, A. K. Smilde and E. Acar, Longitudinal metabolomics data analysis 
 %   informed by mechanistic models, 2024 
 
 %
@@ -13,17 +13,13 @@
 % CMTF Toolbox Available on https://github.com/eacarat/CMTF_Toolbox
 % Auxiliary functions: under folder ./functions
 
-% Simulated data can be downloaded from
-% https://github.com/Lu-source/project-of-challenge-test-data/tree/main/simulated_datasets/Betacell_dysfunction/Simu_6meta_8time_alpha02_betacell_balance.mat
-
-
 %% load real data
 load('data_real.mat')
 % real data is of size 299 subjects by 8 time points by 252 features (Nightingale NMR
 % measurements + insulin + cpeptide)
 % Select the six metabolites (both in real and simulated data)
-X=NMR;
-id_sim =[251 71 73 72 61 76];
+X = NMR;
+id_sim = [251 71 73 72 61 76];
 X  = X(:,:,id_sim);
 
 % select gender: males (id_gender = 2) or females (id_gender = 1)
@@ -40,7 +36,7 @@ outlier  = [142 79 342]; %male
 %outlier = [90 335 250]; %female
 [~,id,~] = intersect(str2num(X.label{1,1}), outlier);
 inc      = setdiff(1:size(X,1),id);
-Xreal   = X(inc,:,:);
+Xreal    = X(inc,:,:);
 Meta     = Meta(inc,:);
 
 % merge BMI groups into two groups
@@ -55,7 +51,10 @@ clearvars -except Xreal Meta
 
 %% load simulated data
 load('data_simulated.mat')
-% simulated data is of size 100 subjects (50 control and 50 pathology subjects) by 6 metabolites by 8 time points by 252 features 
+% Simulated data can be downloaded from
+% https://github.com/Lu-source/project-of-challenge-test-data/tree/main/simulated_datasets/Betacell_dysfunction/Simu_6meta_8time_alpha02_betacell_balance.mat
+% The simulated data is of size 100 subjects (50 control and 50 pathology subjects) by 6 metabolites by 8 time points by 252 features. Only the 50 control subjects are used here.
+
 % Select the control subjects for joint analysis
 normal = find(X_orig.class{1,1}==1);
 Xorig  = X_orig(normal,:,:);
@@ -63,12 +62,10 @@ Xp     = permute(Xorig, [1 3 2]); % permute the simulated to have same arrangeme
 
 Xsim = take_diff(Xp); %T0-corrected simulated data
 
-
-
 %% set model parameters
 R = 3;
-nb_starts=50;
-lambda = 0.01; % regularization coefficient (the data is normalized when fitting regularized CP models)
+nb_starts = 50;
+lambda    = 0.01; % regularization coefficient (the data is normalized when fitting regularized CP models)
 
 %% Joint analysis of real and simulated data using ACMTF
 data = fit_acmtf_simreal(Xreal, Xsim, R, nb_starts);
@@ -81,15 +78,15 @@ eval(strcat('save ACMTF_CPReal_R', num2str(R), '.mat'))
 
 
 %% Example showing the weight of each component of ACMTF
-server_flag=0;
-legd       = {'\lambda (Real)','\sigma (Simulated)'};
+server_flag = 0;
+legd        = {'\lambda (Real)','\sigma (Simulated)'};
 f=figure;
 [Fac_aligned, T1, T2] = show_spread(R, data.Fac_sorted, data.f_sorted, server_flag, legd);
 set(gca,'Fontsize',15)
 
 
             
-%% Example showing how to check the results, e.g., looking at correation between subject scores with meta variables 
+%% Check the correlations between subject scores and meta variables 
 S_ACMTF = data.Zhat{1}.U{2}; % real subjects factor of R-component ACMTF model
 S_CP    = data_cp.U{1}; % real subjects factor of R-component ACMTF model
 C_ACMTF = best_corr_compute(S_ACMTF,Meta);
