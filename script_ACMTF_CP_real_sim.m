@@ -13,6 +13,9 @@
 % CMTF Toolbox Available on https://github.com/eacarat/CMTF_Toolbox
 % Auxiliary functions: under folder ./functions
 
+% Simulated data can be downloaded from
+% https://github.com/Lu-source/project-of-challenge-test-data/tree/main/simulated_datasets/Betacell_dysfunction/Simu_6meta_8time_alpha02_betacell_balance.mat
+
 
 %% load real data
 load('data_real.mat')
