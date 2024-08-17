@@ -1,7 +1,7 @@
 % This script shows the workflow to fit an ACMTF model to jointly analyze two tensors (real/simulated meal challenge metabolomics data) 
 %
 %   L. Li, H. Hoefsloot, B. M. Bakker, D. Horner, M. A. Rasmussen, A. K. Smilde and E. Acar, Longitudinal metabolomics data analysis 
-%   informed by mechanistic models, 2024 
+%   informed by mechanistic models, bioRxiv, 2024  https://doi.org/10.1101/2024.08.13.607724
 
 %
 % The script assumes that the data is stored as a dataset object
